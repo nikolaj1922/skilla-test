@@ -7,13 +7,13 @@ interface FilterRowProps {}
 
 const FilterRow: React.FC<FilterRowProps> = ({}) => {
   return (
-    <div className="text-[#5E7793] text-sm flex items-center justify-between">
+    <div className="text-[#5E7793] text-sm flex items-center justify-between py-[14px] mb-[7px]">
       <Search />
-      <div className="flex items-center justify-center space-x-[36px]">
+      <div className="flex items-center justify-center gap-7">
         {filters.map((item) => (
           <div
             key={item}
-            className="group flex space-x-[8px] justify-center items-center cursor-pointer"
+            className="group flex space-x-2 justify-center items-center cursor-pointer"
           >
             <span className="group-hover:text-[#002CFB] transition duration-150 ease-out">
               {item}
