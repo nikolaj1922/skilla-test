@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .appbar-raiting-block-text {
+    @apply text-[#122945] text-sm;
+  }
+}
