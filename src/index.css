@@ -10,10 +10,14 @@
 
 @layer components {
   .appbar-raiting-block-text {
-    @apply text-[#122945] text-sm;
+    @apply text-[#122945] text-sm whitespace-nowrap;
   }
 
   .icon {
     @apply text-[#ADBFDF] font-semibold hover:text-[#002CFB] cursor-pointer transition duration-150 ease-out;
+  }
+
+  .table-header {
+    @apply font-normal text-[14px] text-[#899CB1];
   }
 }

@@ -24,7 +24,11 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
       </div>
       <div className="flex flex-col gap-8">
         <SidebarButton title="Добавить заказ" iconPath={PlusIcon} />
-        <SidebarButton title="Оплатить" iconPath={InfoIcon} />
+        <SidebarButton
+          title="Оплата"
+          iconPath={InfoIcon}
+          className="space-x-5 pl-8"
+        />
       </div>
     </div>
   );
