@@ -1,6 +1,6 @@
 import React from "react";
 import AppBarRaitingBlock from "./AppBarRaitingBlock";
-import SearchIcon from "../../assets/SearchIcon.svg";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import Avatar from "@mui/material/Avatar";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
@@ -16,15 +16,13 @@ const AppBar: React.FC<AppBarProps> = ({}) => {
           <AppBarRaitingBlock type="quality" qualityPercent={40} />
           <AppBarRaitingBlock type="fails" failPercent={67} />
         </div>
-        <img src={SearchIcon} className="mr-16" />
-        <div className="flex items-center justify-center space-x-[10px] mr-[47px] group">
-          <span className="cursor-pointer">
-            ИП Сидорова Александра Михайловна
-          </span>
+        <MagnifyingGlassIcon className="mr-16 icon h-5 w-5" />
+        <div className="flex items-center justify-center space-x-[10px] mr-[47px] cursor-pointer group">
+          <span>ИП Сидорова Александра Михайловна</span>
           <ChevronDownIcon className="icon h-5 w-5 group-hover:text-[#002CFB]" />
         </div>
-        <div className="flex items-center justify-center space-x-[10px] group">
-          <Avatar className="cursor-pointer" />
+        <div className="flex items-center justify-center space-x-[10px] group cursor-pointer">
+          <Avatar />
           <ChevronDownIcon className="icon h-5 w-5 group-hover:text-[#002CFB]" />
         </div>
       </div>
