@@ -2,8 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-[#E5E5E5];
+  }
+}
+
 @layer components {
   .appbar-raiting-block-text {
     @apply text-[#122945] text-sm;
+  }
+
+  .icon {
+    @apply text-[#ADBFDF] font-semibold hover:text-[#002CFB] cursor-pointer transition duration-150 ease-out;
   }
 }

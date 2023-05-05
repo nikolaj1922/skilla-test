@@ -7,7 +7,7 @@ interface SidebarButtonProps {
 
 const SidebarButton: FC<SidebarButtonProps> = ({ title, iconPath }) => {
   return (
-    <div className="flex text-[#ffffff] h-[52px] w-[200px] bg-[#005FF8] rounded-[4px]  items-center mx-auto justify-center cursor-pointer ">
+    <div className="flex text-[#ffffff] h-[52px] w-[200px] bg-[#005FF8] rounded-[4px]  items-center mx-auto justify-center cursor-pointer hover:bg-[#0024CB] duration-150 transition ease-out">
       <span className="ml-[24px]">{title}</span>
       <img src={iconPath} className="px-[13px] py-5" />
     </div>

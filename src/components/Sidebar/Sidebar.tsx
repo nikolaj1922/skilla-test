@@ -10,7 +10,7 @@ interface SidebarProps {}
 
 const Sidebar: React.FC<SidebarProps> = ({}) => {
   return (
-    <div className="w-[240px] bg-[#091336] h-[936px]">
+    <div className="w-[240px] bg-[#091336] h-[936px] fixed">
       <img src={Logo} className="mt-5 ml-3 mb-8 cursor-pointer" />
       <div className="mb-16">
         {links.map((link) => (
