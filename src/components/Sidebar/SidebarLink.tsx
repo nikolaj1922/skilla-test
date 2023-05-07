@@ -10,12 +10,18 @@ interface SidebarLinkProps {
 const SidebarLink: FC<SidebarLinkProps> = ({ title, iconPath, active }) => {
   return (
     <div
-      className={`flex items-center text-[#ffffff]/60 text-[16px] h-[52px] cursor-pointer ${
-        active && "bg-[#D8E4FB]/32 border-l-[3px] border-[#002CFB] relative"
-      }`}
+      className={`w-full h-[52px] bg-[#091336] ${
+        active && "!bg-[#D8E4FB]/32 border-l-[3px] border-[#002CFB]"
+      } relative cursor-pointer`}
     >
-      <img src={iconPath} className="px-[13px] py-5" />
-      <span className={`${active && "text-[#ffffff]"}`}>{title}</span>
+      <img src={iconPath} className="absolute left-[14px] top-[17px]" />
+      <span
+        className={`absolute left-[48px] top-[14px] medium-text text-[#fff]/60 ${
+          active && "!text-[#fff] left-[45px]"
+        } `}
+      >
+        {title}
+      </span>
       {active && (
         <img src={YellowCircleIcon} className="absolute top-[18px] right-1" />
       )}

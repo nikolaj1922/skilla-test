@@ -6,8 +6,8 @@ interface BalanceAndPeroidRowProps {}
 
 const BalanceAndPeroidRow: React.FC<BalanceAndPeroidRowProps> = ({}) => {
   return (
-    <div className="flex justify-end items-center h-10 mb-5">
-      <div className="space-x-[48px] flex items-center text-[14px]">
+    <div className="flex justify-end items-center h-10 mb-2">
+      <div className="space-x-[50px] flex items-center text-[14px]">
         <Balance />
         <Period />
       </div>

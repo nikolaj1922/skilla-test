@@ -1,18 +1,18 @@
 import React from "react";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { Search } from "../ui/svg";
 
-interface SearchProps {}
+interface SearchBarProps {}
 
-const Search: React.FC<SearchProps> = ({}) => {
+const SearchBar: React.FC<SearchBarProps> = ({}) => {
   const [focused, setFocused] = React.useState(false);
 
   const onFocus = () => setFocused(true);
   const onBlur = () => setFocused(false);
   //Доделать крестик
   return (
-    <div className="flex relative">
-      <MagnifyingGlassIcon
-        className={`icon h-5 w-5 group-focus:left-[18px] absolute top-1/2  -translate-y-1/2 transition-all duration-200 ease-out ${
+    <div className="flex relative group">
+      <Search
+        className={`absolute top-1/2  -translate-y-1/2 transition-all duration-200 ease-out ${
           focused ? "left-[18px]" : "left-0"
         }`}
       />
@@ -26,4 +26,4 @@ const Search: React.FC<SearchProps> = ({}) => {
   );
 };
 
-export default Search;
+export default SearchBar;

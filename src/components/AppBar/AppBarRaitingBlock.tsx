@@ -41,41 +41,45 @@ const AppBarRaitingBlock: React.FC<AppBarRaitingBlockProps> = ({
     },
   }));
 
-  const title = () => {
+  const renderResult = () => {
     if (type === "calls") {
       return (
-        <span className="appbar-raiting-block-text">
-          Новые звонки{" "}
-          <span className="text-[#00A775]">
-            {newCalls} из {totalCalls}
+        <div className="flex flex-col w-[162px] h-[34px]">
+          <span className="appbar-text--rating-block">
+            Новые звонки{" "}
+            <span className="text-[#00A775]">
+              {newCalls} из {totalCalls} шт
+            </span>
+            <BorderLinearProgress variant="determinate" value={50} />
           </span>
-        </span>
+        </div>
       );
     }
     if (type === "quality") {
       return (
-        <span className="appbar-raiting-block-text">
-          Качество разговоров{" "}
-          <span className="text-[#FFB800]">{qualityPercent}%</span>
-        </span>
+        <div>
+          <span className="appbar-text--rating-block">
+            Качество разговоров{" "}
+            <span className="text-[#FFB800]">{qualityPercent}%</span>
+            <BorderLinearProgress variant="determinate" value={50} />
+          </span>
+        </div>
       );
     }
     if (type === "fails") {
       return (
-        <span className="appbar-raiting-block-text">
-          Конверсия в отказ{" "}
-          <span className="text-[#EA1A4F]">{failPercent}%</span>
-        </span>
+        <div>
+          <span className="appbar-text--rating-block">
+            Конверсия в заказ{" "}
+            <span className="text-[#EA1A4F]">{failPercent}%</span>
+            <BorderLinearProgress variant="determinate" value={50} />
+          </span>
+        </div>
       );
     }
   };
 
-  return (
-    <div className="flex flex-col space-y-[7px]">
-      {title()}
-      <BorderLinearProgress variant="determinate" value={50} />
-    </div>
-  );
+  return <>{renderResult()}</>;
 };
 
 export default AppBarRaitingBlock;

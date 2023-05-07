@@ -13,9 +13,9 @@ const SidebarButton: React.FC<SidebarButtonProps> = ({
 }) => {
   return (
     <button
-      className={`flex text-[#ffffff] h-[52px] w-[200px] bg-[#005FF8] rounded-[4px]  items-center mx-auto justify-center cursor-pointer hover:bg-[#0024CB] duration-150 transition ease-out ${className}`}
+      className={`flex text-[#ffffff] w-[200px] h-[52px] rounded-[4px] bg-[#005ff8] items-center mx-auto justify-center cursor-pointer hover:bg-[#0024CB] duration-150 transition ease-out ${className}`}
     >
-      <span className="ml-[24px]">{title}</span>
+      <span className="ml-[24px] medium">{title}</span>
       <img src={iconPath} className="px-[13px] py-5" />
     </button>
   );
