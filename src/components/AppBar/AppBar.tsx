@@ -2,16 +2,16 @@ import React from "react";
 import AppBarRaitingBlock from "./AppBarRaitingBlock";
 import Avatar from "@mui/material/Avatar";
 import { Search, ArrowDown } from "../ui/svg";
-import styles from "./AppBar.module.css";
+import { getDateToAppbar } from "../../lib/utils";
 
 interface AppBarProps {}
 
 const AppBar: React.FC<AppBarProps> = ({}) => {
   return (
-    <div className="absolute w-[1680px] h-[64px] left-[240px] top-0 bg-[#fff] shadow-sm">
+    <div className="fixed z-50 w-[1680px] h-[64px] left-[240px] top-0 bg-[#fff] shadow-sm">
       <div className="absolute left-[120px] text-[#899cb1] h-full flex items-center">
-        <div className="leading-[148%] basis-[90px] text-[15px] mr-[86px]">
-          Среда, 13 окт
+        <div className="leading-[148%] w-[90px] text-[15px] mr-[86px] whitespace-nowrap">
+          {getDateToAppbar()}
         </div>
         <div className="flex space-x-[56px] items-center justify-center basis-[432px] mr-[199px]">
           <AppBarRaitingBlock type="calls" newCalls={20} totalCalls={30} />

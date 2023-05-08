@@ -4,3 +4,8 @@ export { default as ArrowLeft } from "./ArrowLeft";
 export { default as ArrowRight } from "./ArrowRight";
 export { default as ArrowDown } from "./ArrowDown";
 export { default as Plus } from "./Plus";
+export { default as BadGrade } from "./BadGrade";
+export { default as GoodGrade } from "./GoodGrade";
+export { default as PerfectGrade } from "./PerfectGrade";
+export { default as CallIn } from './CallIn'
+export { default as CallOut } from './CallOut'

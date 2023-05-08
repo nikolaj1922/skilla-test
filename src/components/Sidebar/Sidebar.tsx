@@ -4,7 +4,7 @@ import SidebarLink from "./SidebarLink";
 import SidebarButton from "../ui/SidebarButton";
 import PlusIcon from "../../assets/PlusIcon.svg";
 import InfoIcon from "../../assets/InfoIcon.svg";
-import { links } from "./links";
+import { links } from "../../lib/links";
 
 interface SidebarProps {}
 

@@ -1,8 +1,25 @@
 import React from "react";
+import { Calls } from "../../lib/types";
+import { getCallTime, getCallDuration, getRandomGrade } from "../../lib/utils";
+import { Avatar } from "@mui/material";
+import RecognizeButton from "../ui/RecognizeButton";
+import { BadGrade, GoodGrade, PerfectGrade, CallIn, CallOut } from "../ui/svg";
 
-interface CallTableProps {}
+interface CallTableProps {
+  calls: Calls | null;
+}
 
-const CallTable: React.FC<CallTableProps> = ({}) => {
+const CallTable: React.FC<CallTableProps> = ({ calls }) => {
+  console.log(calls);
+
+  const getGrade = () => {
+    const grade = getRandomGrade();
+    if (grade === 0) return <RecognizeButton />;
+    if (grade === 1) return <BadGrade />;
+    if (grade === 2) return <GoodGrade />;
+    if (grade === 3) return <PerfectGrade />;
+  };
+
   return (
     <table className="bg-[#fff] rounded-[8px] text-sm">
       <thead>
@@ -18,16 +35,47 @@ const CallTable: React.FC<CallTableProps> = ({}) => {
         </tr>
       </thead>
       <tbody>
-        <tr className="h-[65px]">
-          <td className="table-header w-[40px]"></td>
-          <td className="table-header w-[53px]">Тип</td>
-          <td className="table-header w-[89px]">Время</td>
-          <td className="table-header w-[128px]">Сотрудник</td>
-          <td className="table-header w-[326px]">Звонок</td>
-          <td className="table-header w-[214px]">Источник</td>
-          <td className="table-header w-[461px]">Оценка</td>
-          <td className="table-header w-[129px]">Длительность</td>
-        </tr>
+        {calls?.results.map((call) => (
+          <tr className="h-[65px] border-b border-[#EAF0FA]" key={call.id}>
+            <td className="table-header w-[40px] border-b border-[#fff]"></td>
+            <td className="table-header w-[53px] pl-2">
+              {call.in_out === 1 ? (
+                <CallIn
+                  rejected={call.status === "Не дозвонился" ? true : false}
+                />
+              ) : (
+                <CallOut
+                  rejected={call.status === "Не дозвонился" ? true : false}
+                />
+              )}
+            </td>
+            <td className="table-header w-[89px] text-[#122945] text-[15px]">
+              {getCallTime(call.date)}
+            </td>
+            <td className="table-header w-[128px]">
+              <Avatar
+                src={call.person_avatar}
+                alt="person logo"
+                sx={{ width: 32, height: 32 }}
+              />
+            </td>
+            <td className="table-header w-[326px] text-[15px] text-[#122945]">
+              {call.in_out === 1 ? call.from_number : call.to_number}
+            </td>
+            <td className="table-header w-[214px]">{call.source}</td>
+            <td className="table-header w-[461px] text-[#EA1A4F]">
+              {call.status === "Дозвонился" &&
+              call.errors[0] === "Скрипт не использован"
+                ? "Скрипт не использован"
+                : call.status === "Дозвонился"
+                ? getGrade()
+                : null}
+            </td>
+            <td className="table-header w-[129px] text-right text-[#122945] pr-[40px]">
+              {call.time > 0 && getCallDuration(call.time)}
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );

@@ -39,4 +39,8 @@
   .appbar-text--rating-block {
     @apply text-[#122945] leading-[148%] text-[14px] whitespace-nowrap space-y-[5px];
   }
+
+  .date-menu--item {
+    @apply h-[40px] py-[6px] pl-[20px] text-[14px] leading-[28px] hover:bg-[#002CFB]/10 cursor-pointer transition duration-150 ease-out;
+  }
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import SearchBar from "./SearchBar";
-import { ChevronDownIcon } from "@heroicons/react/24/solid";
-import { filters } from "./filters";
+import { filters } from "../../lib/filters";
 import { ArrowDown } from "../ui/svg";
 
 interface FilterRowProps {}
