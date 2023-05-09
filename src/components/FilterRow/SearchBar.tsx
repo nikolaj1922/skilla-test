@@ -1,7 +1,6 @@
 import React from "react";
 import debounce from "lodash.debounce";
-import BigClose from "../ui/svg/BigClose";
-import { Search } from "../ui/svg";
+import { Search, BigClose } from "../ui/svg";
 import { setValue } from "../../redux/slices/searchNumberSlice";
 import { useAppDispatch } from "../../redux/hooks";
 import { clearValue } from "../../redux/slices/searchNumberSlice";
@@ -28,7 +27,7 @@ const SearchBar: React.FC<SearchBarProps> = ({}) => {
         }`}
       />
       <input
-        className="placeholder:text-[#5E7793] w-[482px] bg-inherit pl-[28px] border-none focus:pl-[48px] group py-2.5 transition-all duration-200 ease-out outline-[0.5px] outline-[#002CFB] rounded-[48px]"
+        className="placeholder:text-[#5E7793] w-[482px] bg-inherit pl-[28px] border-none focus:pl-[48px] group py-2.5 transition-all duration-200 ease-out outline-[0.5px] outline-[#002CFB] rounded-[48px] placeholder:text-[14px]"
         placeholder="Поиск по звонкам"
         value={searchInputValue}
         type="number"

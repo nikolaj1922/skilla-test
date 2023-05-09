@@ -3,13 +3,12 @@ import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress";
 import { styled } from "@mui/material/styles";
+import { useAppSelector } from "../../redux/hooks";
 
 interface AppBarRaitingBlockProps {
   type: "calls" | "quality" | "fails";
   failPercent?: number;
   qualityPercent?: number;
-  newCalls?: number;
-  totalCalls?: number;
 }
 
 const getLinearProgressColor = (
@@ -23,11 +22,13 @@ const getLinearProgressColor = (
 
 const AppBarRaitingBlock: React.FC<AppBarRaitingBlockProps> = ({
   type,
-  newCalls,
-  totalCalls,
   qualityPercent,
   failPercent,
 }) => {
+  const { totalCalls, newCalls } = useAppSelector(
+    (state) => state.ratingNewCalls
+  );
+
   const BorderLinearProgress = styled(LinearProgress)(() => ({
     height: 6,
     width: 156,
@@ -50,14 +51,17 @@ const AppBarRaitingBlock: React.FC<AppBarRaitingBlockProps> = ({
             <span className="text-[#00A775]">
               {newCalls} из {totalCalls} шт
             </span>
-            <BorderLinearProgress variant="determinate" value={50} />
+            <BorderLinearProgress
+              variant="determinate"
+              value={(newCalls / totalCalls) * 100}
+            />
           </span>
         </div>
       );
     }
     if (type === "quality") {
       return (
-        <div>
+        <div className="flex flex-col w-[162px] h-[34px]">
           <span className="appbar-text--rating-block">
             Качество разговоров{" "}
             <span className="text-[#FFB800]">{qualityPercent}%</span>
@@ -68,7 +72,7 @@ const AppBarRaitingBlock: React.FC<AppBarRaitingBlockProps> = ({
     }
     if (type === "fails") {
       return (
-        <div>
+        <div className="flex flex-col w-[162px] h-[34px]">
           <span className="appbar-text--rating-block">
             Конверсия в заказ{" "}
             <span className="text-[#EA1A4F]">{failPercent}%</span>

@@ -13,8 +13,8 @@ const AppBar: React.FC<AppBarProps> = ({}) => {
         <div className="leading-[148%] w-[90px] text-[15px] mr-[86px] whitespace-nowrap">
           {getDateToAppbar()}
         </div>
-        <div className="flex space-x-[56px] items-center justify-center basis-[432px] mr-[199px]">
-          <AppBarRaitingBlock type="calls" newCalls={20} totalCalls={30} />
+        <div className="flex space-x-[56px] items-center justify-center basis-[432px] mr-[192px]">
+          <AppBarRaitingBlock type="calls" />
           <AppBarRaitingBlock type="quality" qualityPercent={40} />
           <AppBarRaitingBlock type="fails" failPercent={67} />
         </div>

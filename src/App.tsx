@@ -8,6 +8,8 @@ import { getFullDate } from "./lib/utils";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
 import { setCalls } from "./redux/slices/callsSlice";
 import { setInOut } from "./redux/slices/inOutSlice";
+import { setNewCalls, setTotalCalls } from "./redux/slices/ratingNewCalls";
+import { Result } from "./lib/types";
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -27,6 +29,15 @@ const App: React.FC = () => {
             inOutState !== null ? `&in_out=${inOutState}` : ""
           }`
         );
+
+        dispatch(
+          setNewCalls(
+            data.results.filter(
+              (call: Result) => call.results[0]?.type === "is_new"
+            ).length
+          )
+        );
+        dispatch(setTotalCalls(data.results.length));
         dispatch(setCalls(data));
       } catch (err) {
         console.log(err);

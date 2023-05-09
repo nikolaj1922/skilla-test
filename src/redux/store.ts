@@ -3,6 +3,7 @@ import sortDurationReducer from "./slices/sortDurationSlice";
 import callsReducer from "./slices/callsSlice";
 import inOutReducer from "./slices/inOutSlice";
 import searchNumberReducer from "./slices/searchNumberSlice";
+import ratingNewCallsReducer from "./slices/ratingNewCalls";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     calls: callsReducer,
     inOut: inOutReducer,
     searchNumber: searchNumberReducer,
+    ratingNewCalls: ratingNewCallsReducer,
   },
 });
 

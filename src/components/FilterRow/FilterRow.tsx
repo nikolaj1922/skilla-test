@@ -17,7 +17,7 @@ const FilterRow: React.FC<FilterRowProps> = ({}) => {
   const clearFilters = () => dispatch(resetInOut());
 
   return (
-    <div className="text-[#5E7793] text-sm flex items-center justify-between py-[14px] w-[1440px]">
+    <div className="text-[#5E7793] text-sm flex items-center justify-between pt-[14px] pb-[11px] w-[1440px]">
       <SearchBar />
       <div className="flex items-center justify-center space-x-[35px]">
         {inOutState !== null && (

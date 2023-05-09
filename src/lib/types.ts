@@ -23,7 +23,7 @@ export interface Result {
   source: string;
   errors: any[];
   disconnect_reason: string;
-  results: any[];
+  results: { type: string; title: string; tooltip: string }[];
   stages: any[];
   abuse: Abuse;
   contact_name: string;
