@@ -1,9 +1,14 @@
-export const getFullDate = (differentDay?: number): string => {
+export const getFullDate = (
+  differentDay: number,
+  changerValue: number
+): string => {
   let date = new Date();
   if (differentDay) {
-    date = new Date(date.setDate(date.getDate() + differentDay));
+    date = new Date(date.setDate(date.getDate() - differentDay));
   }
-
+  if (changerValue) {
+    date = new Date(date.setDate(date.getDate() - changerValue));
+  }
   const day = date.getDate() > 9 ? date.getDate() : `0${date.getDate()}`;
   const month =
     date.getMonth() > 9 ? date.getMonth() + 1 : `0${date.getMonth() + 1}`;
