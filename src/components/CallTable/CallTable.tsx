@@ -22,13 +22,13 @@ const CallTable: React.FC<CallTableProps> = ({}) => {
   }
 
   return (
-    <table className="bg-[#fff] rounded-[8px] text-sm mb-20">
+    <table className="bg-[#fff] rounded-[8px] text-sm mb-20 group/table">
       <thead>
-        <tr className="h-[60px] border-b border-[#EAF0FA] group">
+        <tr className="h-[60px] border-b border-[#EAF0FA] ">
           <th className="table-header w-[40px] border-b border-[#fff] relative">
             <input
               type="checkbox"
-              className={`hidden group-hover:inline-block checked:inline-block w-[17px] h-[17px] absolute top-[24px] left-[12px] text-[#002CFB] hover:text-[#0024CB] border-2 rounded-sm focus:ring-0 border-[#ADBFDF] cursor-pointer hover:border-[#002CFB] transition duration-150 ease-out`}
+              className={`hidden group-hover/table:inline-block checked:inline-block w-[17px] h-[17px] absolute top-[24px] left-[12px] text-[#002CFB] hover:text-[#0024CB] border-2 rounded-sm focus:ring-0 border-[#ADBFDF] cursor-pointer hover:border-[#002CFB] transition duration-150 ease-out`}
             />
           </th>
           <th className="table-header w-[53px] text-start">Тип</th>
