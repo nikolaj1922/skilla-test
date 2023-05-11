@@ -1,13 +1,13 @@
-import ResultsIcon from "../../assets/ResultsIcon.svg";
-import OrderIcon from "../../assets/OrdersIcon.svg";
-import MessageIcon from "../../assets/MessagesIcon.svg";
-import CallIcon from "../../assets/CallsIcon.svg";
-import ContrAgents from "../../assets/ContrAgents.svg";
-import DocumentsIcon from "../../assets/DocumentsIcon.svg";
-import PerformersIcon from "../../assets/PerformersIcon.svg";
-import ReportIcon from "../../assets/ReportIcon.svg";
-import KnowledgeBaseIcon from "../../assets/KnowledgeBaseIcon.svg";
-import SettingsIcon from "../../assets/SettingsIcon.svg";
+import ResultsIcon from "../assets/ResultsIcon.svg";
+import OrderIcon from "../assets/OrdersIcon.svg";
+import MessageIcon from "../assets/MessagesIcon.svg";
+import CallIcon from "../assets/CallsIcon.svg";
+import ContrAgents from "../assets/ContrAgents.svg";
+import DocumentsIcon from "../assets/DocumentsIcon.svg";
+import PerformersIcon from "../assets/PerformersIcon.svg";
+import ReportIcon from "../assets/ReportIcon.svg";
+import KnowledgeBaseIcon from "../assets/KnowledgeBaseIcon.svg";
+import SettingsIcon from "../assets/SettingsIcon.svg";
 
 export const links = [
   {

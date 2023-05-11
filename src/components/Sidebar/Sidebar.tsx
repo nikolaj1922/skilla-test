@@ -4,15 +4,15 @@ import SidebarLink from "./SidebarLink";
 import SidebarButton from "../ui/SidebarButton";
 import PlusIcon from "../../assets/PlusIcon.svg";
 import InfoIcon from "../../assets/InfoIcon.svg";
-import { links } from "./links";
+import { links } from "../../lib/links";
 
 interface SidebarProps {}
 
 const Sidebar: React.FC<SidebarProps> = ({}) => {
   return (
-    <div className="w-[240px] bg-[#091336] h-[936px] fixed">
-      <img src={Logo} className="mt-5 ml-3 mb-8 cursor-pointer" />
-      <div className="mb-16">
+    <div className="fixed w-[240px] h-[963px] left-0 top-0 bg-[#091336]">
+      <img src={Logo} className="absolute left-[5%] top-[2%]" />
+      <div className="absolute w-[240px] left-0 top-[80px] flex flex-col items-center">
         {links.map((link) => (
           <SidebarLink
             key={link.id}
@@ -22,12 +22,16 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
           />
         ))}
       </div>
-      <div className="flex flex-col gap-8">
-        <SidebarButton title="Добавить заказ" iconPath={PlusIcon} />
+      <div className="absolute top-[664px] left-[20px] flex flex-col gap-[32px]">
+        <SidebarButton
+          title="Добавить заказ"
+          iconPath={PlusIcon}
+          className="gap-2"
+        />
         <SidebarButton
           title="Оплата"
           iconPath={InfoIcon}
-          className="space-x-5 pl-8"
+          className="gap-6 pl-[35px]"
         />
       </div>
     </div>

@@ -14,10 +14,18 @@
     "@emotion/styled": "^11.10.8",
     "@heroicons/react": "^2.0.17",
     "@mui/material": "^5.12.3",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@tailwindcss/forms": "^0.5.3",
+    "axios": "^1.4.0",
+    "lodash.debounce": "^4.0.8",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-audio-player": "^0.17.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5"
   },
   "devDependencies": {
+    "@types/lodash.debounce": "^4.0.7",
+    "@types/node": "^20.1.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
@@ -28,6 +36,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
     "postcss": "^8.4.23",
+    "react-error-overlay": "6.0.9",
     "tailwindcss": "^3.3.2",
     "typescript": "^5.0.2",
     "vite": "^4.3.2"

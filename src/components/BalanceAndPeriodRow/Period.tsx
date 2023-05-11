@@ -1,21 +1,37 @@
 import React from "react";
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  CalendarIcon,
-} from "@heroicons/react/24/solid";
+import { ArrowLeft, ArrowRight, Calendar } from "../ui/svg";
+import DateMenu from "./DateMenu";
+import { useAppSelector, useAppDispatch } from "../../redux/hooks";
+import { setChangerValue } from "../../redux/slices/sortDurationSlice";
 
 interface PeriodProps {}
 
 const Period: React.FC<PeriodProps> = ({}) => {
+  const [open, setOpen] = React.useState<boolean>(false);
+  const dispatch = useAppDispatch();
+  const { title, duration, changerValue } = useAppSelector(
+    (state) => state.sortDuration
+  );
+
   return (
-    <div className="flex items-center justify-center space-x-[18px]">
-      <ChevronLeftIcon className="h-4 w-4 icon" />
-      <div className="flex items-center space-x-2 cursor-pointer group">
-        <CalendarIcon className="h-6 w-6 icon group-hover:text-[#002CFB]" />
-        <span className="text-[#005FF8]">3 дня</span>
+    <div className="flex items-center justify-center space-x-[21px] relative">
+      <div onClick={() => dispatch(setChangerValue(duration))}>
+        <ArrowLeft />
       </div>
-      <ChevronRightIcon className="h-4 w-4 icon" />
+      <div
+        className="flex items-center space-x-2 cursor-pointer group"
+        onClick={() => setOpen(true)}
+      >
+        <Calendar />
+        <span className="text-[#005FF8]">{title}</span>
+      </div>
+      <div
+        onClick={() => dispatch(setChangerValue(duration * -1))}
+        className={`${changerValue === 0 && "pointer-events-none"}`}
+      >
+        <ArrowRight />
+      </div>
+      {open && <DateMenu setOpen={setOpen} />}
     </div>
   );
 };
