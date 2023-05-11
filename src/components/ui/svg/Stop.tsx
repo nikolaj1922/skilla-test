@@ -10,7 +10,7 @@ const Stop: React.FC<StopProps> = ({ className }) => {
       strokeWidth="1.5"
       stroke="currentColor"
       fill="#fff"
-      className="w-6 h-6 text-[#002CFB] cursor-pointer"
+      className={`w-6 h-6 text-[#002CFB] cursor-pointer ${className}`}
     >
       <path
         strokeLinecap="round"
