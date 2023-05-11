@@ -13,8 +13,6 @@ const CallTable: React.FC<CallTableProps> = ({}) => {
   const { searchValue } = useAppSelector((state) => state.searchNumber);
   const {
     changerValue,
-    customEndValue,
-    customStartValue,
     duration,
     isCustomDuration,
   } = useAppSelector((state) => state.sortDuration);
