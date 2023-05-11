@@ -1,6 +1,6 @@
 import React from "react";
 import AppBar from "./components/AppBar/AppBar";
-import BalanceAndPeroidRow from "./components/BalanceAndPeriodRow/BalanceAndPeroidRow";
+import BalanceAndPeriodRow from "./components/BalanceAndPeriodRow/BalanceAndPeriodRow";
 import FilterRow from "./components/FilterRow/FilterRow";
 import CallTable from "./components/CallTable/CallTable";
 import { getCallsRequest } from "./lib/axios";
@@ -13,7 +13,7 @@ import { Result } from "./lib/types";
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { duration, changerValue } = useAppSelector(
+  const { duration, changerValue, isCustomDuration } = useAppSelector(
     (state) => state.sortDuration
   );
   const { inOutState } = useAppSelector((state) => state.inOut);
@@ -21,11 +21,12 @@ const App: React.FC = () => {
   React.useEffect(() => {
     const getCalls = async () => {
       try {
+        if (isCustomDuration) return;
         const { data } = await getCallsRequest.post(
           `/getList?date_start=${getFullDate(
-            duration,
-            changerValue
-          )}&date_end=${getFullDate(0, changerValue)}${
+            changerValue,
+            duration
+          )}&date_end=${getFullDate(changerValue)}${
             inOutState !== null ? `&in_out=${inOutState}` : ""
           }`
         );
@@ -44,13 +45,13 @@ const App: React.FC = () => {
       }
     };
     getCalls();
-  }, [setInOut, duration, changerValue, inOutState]);
+  }, [setInOut, duration, changerValue, inOutState, isCustomDuration]);
 
   return (
     <div className="ml-[240px]">
       <AppBar />
       <div className="mt-[84px] w-[1440px] ml-[120px]">
-        <BalanceAndPeroidRow />
+        <BalanceAndPeriodRow />
         <FilterRow />
         <CallTable />
       </div>

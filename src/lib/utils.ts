@@ -1,6 +1,6 @@
 export const getFullDate = (
-  differentDay: number,
-  changerValue: number
+  changerValue?: number,
+  differentDay?: number,
 ): string => {
   let date = new Date();
   if (differentDay) {

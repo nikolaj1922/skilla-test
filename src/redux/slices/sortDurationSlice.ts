@@ -7,12 +7,14 @@ const initialState: {
   title: string;
   customStartValue: string;
   customEndValue: string;
+  isCustomDuration: boolean;
 } = {
   duration: 3,
   changerValue: 0,
   title: "3 дня",
   customStartValue: "",
   customEndValue: "",
+  isCustomDuration: false,
 };
 
 const sortDurationSlice = createSlice({
@@ -36,8 +38,17 @@ const sortDurationSlice = createSlice({
     setCustomStartValue: (state, action: PayloadAction<string>) => {
       state.customStartValue = action.payload;
     },
+    setIsCustomDuration: (state, action: PayloadAction<boolean>) => {
+      state.isCustomDuration = action.payload;
+    },
   },
 });
 
-export const { changeDuration, setChangerValue, setCustomEndValue, setCustomStartValue } = sortDurationSlice.actions;
+export const {
+  changeDuration,
+  setChangerValue,
+  setCustomEndValue,
+  setCustomStartValue,
+  setIsCustomDuration,
+} = sortDurationSlice.actions;
 export default sortDurationSlice.reducer;

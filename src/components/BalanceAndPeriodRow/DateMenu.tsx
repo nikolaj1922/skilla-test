@@ -4,8 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import {
   changeDuration,
   setChangerValue,
-  setCustomEndValue,
-  setCustomStartValue,
+  setIsCustomDuration,
 } from "../../redux/slices/sortDurationSlice";
 import { Calendar } from "../ui/svg";
 import { getCallsRequest } from "../../lib/axios";
@@ -17,10 +16,10 @@ interface DateMenuProps {
 
 const DateMenu: React.FC<DateMenuProps> = ({ setOpen }) => {
   const menuRef = React.useRef<HTMLDivElement | null>(null);
+  const inputStartDateRef = React.useRef<HTMLInputElement | null>(null);
+  const inputEndDateRef = React.useRef<HTMLInputElement | null>(null);
   const dispatch = useAppDispatch();
-  const { duration, customEndValue, customStartValue } = useAppSelector(
-    (state) => state.sortDuration
-  );
+  const { duration } = useAppSelector((state) => state.sortDuration);
   const { inOutState } = useAppSelector((state) => state.inOut);
   useOnClickOutside(menuRef, () => setOpen(false));
 
@@ -35,11 +34,12 @@ const DateMenu: React.FC<DateMenuProps> = ({ setOpen }) => {
     try {
       const { data } = await getCallsRequest.post(
         `/getList?date_start=${formatCustomValue(
-          customStartValue
-        )}&date_end=${formatCustomValue(customEndValue)}${
+          inputStartDateRef.current?.value!
+        )}&date_end=${formatCustomValue(inputEndDateRef.current?.value!)}${
           inOutState !== null ? `&in_out=${inOutState}` : ""
         }`
       );
+      dispatch(setIsCustomDuration(true));
       dispatch(setCalls(data));
     } catch (err) {
       console.log(err);
@@ -56,6 +56,7 @@ const DateMenu: React.FC<DateMenuProps> = ({ setOpen }) => {
         onClick={() => {
           dispatch(changeDuration(3));
           dispatch(setChangerValue(0));
+          dispatch(setIsCustomDuration(false));
           setOpen(false);
         }}
       >
@@ -66,6 +67,7 @@ const DateMenu: React.FC<DateMenuProps> = ({ setOpen }) => {
         onClick={() => {
           dispatch(changeDuration(7));
           dispatch(setChangerValue(0));
+          dispatch(setIsCustomDuration(false));
           setOpen(false);
         }}
       >
@@ -76,6 +78,7 @@ const DateMenu: React.FC<DateMenuProps> = ({ setOpen }) => {
         onClick={() => {
           dispatch(changeDuration(30));
           dispatch(setChangerValue(0));
+          dispatch(setIsCustomDuration(false));
           setOpen(false);
         }}
       >
@@ -86,6 +89,7 @@ const DateMenu: React.FC<DateMenuProps> = ({ setOpen }) => {
         onClick={() => {
           dispatch(changeDuration(365));
           dispatch(setChangerValue(0));
+          dispatch(setIsCustomDuration(false));
           setOpen(false);
         }}
       >
@@ -98,21 +102,21 @@ const DateMenu: React.FC<DateMenuProps> = ({ setOpen }) => {
             <input
               className="text-[14px] w-[56px] h-[28px] placeholder:text-[#ADBFDF] placeholder:text-[18px] outline-none"
               placeholder="__.__.__"
-              onChange={(e) => dispatch(setCustomStartValue(e.target.value))}
+              ref={inputStartDateRef}
               maxLength={8}
             />
             <span className="text-[#ADBFDF]">-</span>
             <input
               className="text-[14px] w-[56px] h-[28px] placeholder:text-[#ADBFDF] placeholder:text-[18px] outline-none"
               placeholder="__.__.__"
-              onChange={(e) => dispatch(setCustomEndValue(e.target.value))}
+              ref={inputEndDateRef}
               maxLength={8}
             />
           </div>
           <div
             onClick={() => {
-              customEndValue.length === 8 &&
-                customStartValue.length === 8 &&
+              inputStartDateRef?.current?.value.length === 8 &&
+                inputEndDateRef?.current?.value.length === 8 &&
                 getCalls();
             }}
           >
